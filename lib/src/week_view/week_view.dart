@@ -129,6 +129,8 @@ class WeekView<T extends Object?> extends StatefulWidget {
   /// This method will be called when user long press on calendar.
   final DatePressCallback? onDateLongPress;
 
+  final DatePressCallback? onDatePress;
+
   /// Defines the day from which the week starts.
   ///
   /// Default value is [WeekDays.monday].
@@ -165,6 +167,7 @@ class WeekView<T extends Object?> extends StatefulWidget {
     this.scrollOffset = 0.0,
     this.onEventTap,
     this.onDateLongPress,
+    this.onDatePress,
     this.weekDays = WeekDays.values,
     this.showWeekends = true,
     this.startDay = WeekDays.monday,
@@ -351,6 +354,7 @@ class WeekViewState<T extends Object?> extends State<WeekView<T>> {
                                 timeLineBuilder: _timeLineBuilder,
                                 onTileTap: widget.onEventTap,
                                 onDateLongPress: widget.onDateLongPress,
+                                onDatePress: widget.onDatePress,
                                 eventTileBuilder: _eventTileBuilder,
                                 heightPerMinute: widget.heightPerMinute,
                                 hourIndicatorSettings: _hourIndicatorSettings,
