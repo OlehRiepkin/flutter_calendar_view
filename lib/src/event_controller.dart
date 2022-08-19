@@ -114,7 +114,7 @@ class EventController<T extends Object?> extends ChangeNotifier {
       for (var i = 0;
           i <= rangingEvent.endDate.difference(rangingEvent.date).inDays;
           i++) {
-        daysFromRange.add(rangingEvent.date.add(Duration(days: i)));
+        daysFromRange.add(rangingEvent.date.addDays(i));
       }
       if (rangingEvent.date.isBefore(rangingEvent.endDate)) {
         for (final eventDay in daysFromRange) {

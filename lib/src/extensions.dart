@@ -58,27 +58,26 @@ extension DateTimeExtensions on DateTime {
     // adding 1 in index. So, new formula with WeekDays is,
     //    difference = (weekdays - (start.index + 1))%7
     //
-    final startDay =
-        withoutTime.subtract(Duration(days: (weekday - start.index - 1) % 7));
+    final startDay = withoutTime.addDays(-((weekday - start.index - 1) % 7));
 
     return [
       startDay,
-      startDay.add(Duration(days: 1)),
-      startDay.add(Duration(days: 2)),
-      startDay.add(Duration(days: 3)),
-      startDay.add(Duration(days: 4)),
-      startDay.add(Duration(days: 5)),
-      startDay.add(Duration(days: 6)),
+      startDay.addDays(1),
+      startDay.addDays(2),
+      startDay.addDays(3),
+      startDay.addDays(4),
+      startDay.addDays(5),
+      startDay.addDays(6),
     ];
   }
 
   /// Returns the first date of week containing the current date
   DateTime firstDayOfWeek({WeekDays start = WeekDays.monday}) =>
-      withoutTime.subtract(Duration(days: (weekday - start.index - 1) % 7));
+      withoutTime.addDays(-((weekday - start.index - 1) % 7));
 
   /// Returns the last date of week containing the current date
   DateTime lastDayOfWeek({WeekDays start = WeekDays.monday}) =>
-      withoutTime.add(Duration(days: 6 - (weekday - start.index - 1) % 7));
+      withoutTime.addDays(6 - (weekday - start.index - 1) % 7);
 
   /// Returns list of all dates of [month].
   /// All the dates are week based that means it will return array of size 42
@@ -121,6 +120,32 @@ extension DateTimeExtensions on DateTime {
         other.second == second &&
         other.millisecond == millisecond &&
         other.microsecond == microsecond;
+  }
+
+  DateTime copyWith({
+    int? year,
+    int? month,
+    int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    int? microsecond,
+  }) {
+    return DateTime(
+      year ?? this.year,
+      month ?? this.month,
+      day ?? this.day,
+      hour ?? this.hour,
+      minute ?? this.minute,
+      second ?? this.second,
+      millisecond ?? this.millisecond,
+      microsecond ?? this.microsecond,
+    );
+  }
+
+  DateTime addDays(int days) {
+    return copyWith(day: day + days);
   }
 }
 

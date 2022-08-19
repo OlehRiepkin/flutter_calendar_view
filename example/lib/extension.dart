@@ -69,27 +69,6 @@ extension DateUtils on DateTime {
 
   TimeOfDay get timeOfDay => TimeOfDay(hour: hour, minute: minute);
 
-  DateTime copyWith({
-    int? year,
-    int? month,
-    int? day,
-    int? hour,
-    int? minute,
-    int? second,
-    int? millisecond,
-    int? microsecond,
-  }) =>
-      DateTime(
-        year ?? this.year,
-        month ?? this.month,
-        day ?? this.day,
-        hour ?? this.hour,
-        minute ?? this.minute,
-        second ?? this.second,
-        millisecond ?? this.millisecond,
-        microsecond ?? this.microsecond,
-      );
-
   String dateToStringWithFormat({String format = 'y-M-d'}) {
     return DateFormat(format).format(this);
   }

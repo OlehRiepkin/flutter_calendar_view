@@ -333,7 +333,7 @@ class WeekViewState<T extends Object?> extends State<WeekView<T>> {
                     onPageChanged: _onPageChange,
                     itemBuilder: (_, index) {
                       final dates = _minDate
-                          .add(Duration(days: index * DateTime.daysPerWeek))
+                          .addDays(index * DateTime.daysPerWeek)
                           .datesOfWeek(start: widget.startDay);
 
                       return ValueListenableBuilder(
@@ -590,7 +590,7 @@ class WeekViewState<T extends Object?> extends State<WeekView<T>> {
           _currentStartDate.month,
           _currentStartDate.day + (index - _currentIndex) * 7,
         );
-        _currentEndDate = _currentStartDate.add(Duration(days: 6));
+        _currentEndDate = _currentStartDate.addDays(6);
         _currentIndex = index;
       });
     }
