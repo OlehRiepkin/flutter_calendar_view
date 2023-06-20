@@ -180,6 +180,7 @@ class InternalWeekViewPage<T extends Object?> extends StatelessWidget {
           Divider(
             thickness: 1,
             height: 1,
+            color: hourIndicatorSettings.color,
           ),
           SizedBox(
             width: width,
